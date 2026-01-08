@@ -1,17 +1,17 @@
+import {
+	setCurrentPlayer,
+	setDraw,
+	setField,
+	setGameOver,
+	setWinner
+} from '../actions'
+import { useDispatch, useReduxState } from '../redux-manager'
 import { checkGame } from '../utils/checkGame'
 import FieldLayout from './FieldLayout'
 
-export default function Field({ ...props }) {
-	const {
-		field,
-		setField,
-		setIsDraw,
-		setIsGameOver,
-		setWinner,
-		currentPlayer,
-		setCurrentPlayer,
-		isGameOver
-	} = props
+export default function Field() {
+	const { field, currentPlayer, isGameOver } = useReduxState()
+	const dispatch = useDispatch()
 
 	const onGameCheck = index => {
 		if (isGameOver) return
@@ -19,23 +19,23 @@ export default function Field({ ...props }) {
 
 		const newField = [...field]
 		newField[index] = currentPlayer
-		setField(newField)
+		dispatch(setField(newField))
 
 		const result = checkGame(newField, currentPlayer)
 
 		if (result === 'X' || result === 'O') {
-			setWinner(result)
-			setIsGameOver(true)
+			dispatch(setWinner(result))
+			dispatch(setGameOver())
 			return
 		}
 
 		if (result === 'Draw') {
-			setIsDraw(true)
-			setIsGameOver(true)
+			dispatch(setDraw())
+			dispatch(setGameOver())
 			return
 		}
 
-		setCurrentPlayer(prev => (prev === 'X' ? 'O' : 'X'))
+		dispatch(setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X'))
 	}
 
 	return (
