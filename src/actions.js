@@ -22,9 +22,9 @@ export const setGameOver = () => ({
 	payload: true
 })
 
-export const setRestartGame = initialState => ({
+export const setRestartGame = () => ({
 	type: ACTION_TYPE.RESTART_GAME,
-	payload: initialState
+	payload: true
 })
 
 export const setDraw = () => ({
