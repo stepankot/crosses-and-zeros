@@ -1,7 +1,16 @@
-import { useReduxState } from '../redux-manager'
+import { useSelector } from 'react-redux'
+import {
+	selecetWinner,
+	selectCurrentPlayer,
+	selectIsdraw,
+	selectIsGameOver
+} from '../selectors'
 
 export default function InformationLayout({ resetGame }) {
-	const { isGameOver, winner, isDraw, currentPlayer } = useReduxState()
+	const currentPlayer = useSelector(selectCurrentPlayer)
+	const isGameOver = useSelector(selectIsGameOver)
+	const winner = useSelector(selecetWinner)
+	const isDraw = useSelector(selectIsdraw)
 
 	return (
 		<section className="infoSection">

@@ -1,5 +1,5 @@
+import { useDispatch } from 'react-redux'
 import { setRestartGame } from '../actions'
-import { useDispatch } from '../redux-manager'
 import InformationLayout from './InformationLayout'
 
 export default function Information() {

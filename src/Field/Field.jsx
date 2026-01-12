@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux'
 import {
 	setCurrentPlayer,
 	setDraw,
@@ -5,12 +6,20 @@ import {
 	setGameOver,
 	setWinner
 } from '../actions'
-import { useDispatch, useReduxState } from '../redux-manager'
+
 import { checkGame } from '../utils/checkGame'
 import FieldLayout from './FieldLayout'
+import {
+	selectCurrentPlayer,
+	selectField,
+	selectIsGameOver
+} from '../selectors'
 
 export default function Field() {
-	const { field, currentPlayer, isGameOver } = useReduxState()
+	const currentPlayer = useSelector(selectCurrentPlayer)
+	const field = useSelector(selectField)
+	const isGameOver = useSelector(selectIsGameOver)
+
 	const dispatch = useDispatch()
 
 	const onGameCheck = index => {
