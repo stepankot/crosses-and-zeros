@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import {
 	setCurrentPlayer,
 	setDraw,
@@ -8,21 +8,16 @@ import {
 } from '../actions'
 
 import { checkGame } from '../utils/checkGame'
-import FieldLayout from './FieldLayout'
-import {
-	selectCurrentPlayer,
-	selectField,
-	selectIsGameOver
-} from '../selectors'
+import { FieldLayout } from './FieldLayout'
+import { Component } from 'react'
 
-export default function Field() {
-	const currentPlayer = useSelector(selectCurrentPlayer)
-	const field = useSelector(selectField)
-	const isGameOver = useSelector(selectIsGameOver)
+export class OldField extends Component {
+	constructor(props) {
+		super(props)
+	}
 
-	const dispatch = useDispatch()
-
-	const onGameCheck = index => {
+	onGameCheck = index => {
+		const { isGameOver, field, currentPlayer, dispatch } = this.props
 		if (isGameOver) return
 		if (field[index] !== '') return
 
@@ -47,10 +42,22 @@ export default function Field() {
 		dispatch(setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X'))
 	}
 
-	return (
-		<FieldLayout
-			field={field}
-			onClick={onGameCheck}
-		></FieldLayout>
-	)
+	render() {
+		const { field } = this.props
+
+		return (
+			<FieldLayout
+				field={field}
+				onClick={this.onGameCheck}
+			></FieldLayout>
+		)
+	}
 }
+
+const mapStateToProps = state => ({
+	currentPlayer: state.currentPlayer,
+	field: state.field,
+	isGameOver: state.isGameOver
+})
+
+export const Field = connect(mapStateToProps)(OldField)

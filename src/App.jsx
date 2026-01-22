@@ -1,13 +1,14 @@
-import Field from './Field/Field'
+import { Field } from './Field/Field'
 import Information from './Information/Infromation'
+import { Component } from 'react'
 
-function App() {
-	return (
-		<div className="gameLayout">
-			<Field />
-			<Information />
-		</div>
-	)
+export class OldApp extends Component {
+	render() {
+		return (
+			<div className="gameLayout">
+				<Field />
+				<Information />
+			</div>
+		)
+	}
 }
-
-export default App
