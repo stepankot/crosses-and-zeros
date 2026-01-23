@@ -1,49 +1,51 @@
+@import 'tailwindcss';
+
 :root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
 }
 
 .gameField {
-  width: 300px;
-  font-size: 50px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  border: 2px, solid, #bef1ff46;
+	width: 300px;
+	font-size: 50px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	border: 2px, solid, #bef1ff46;
 }
 
 .fiedlValueBox {
-  margin: 10px;
-  height: 50px;
-  text-align: center;
-  border: 2px solid rgba(36, 1, 1, 0.11);
+	margin: 10px;
+	height: 50px;
+	text-align: center;
+	border: 2px solid rgba(36, 1, 1, 0.11);
 }
 .fiedlValueBox:hover {
-  background-color: #bef1ffde;
+	background-color: #bef1ffde;
 }
 
 .gameLayout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .resetButtonContainer {
-  display: flex;
-  align-items: center;
-  justify-self: center;
+	display: flex;
+	align-items: center;
+	justify-self: center;
 }
 
 .resetButtonContainer button {
-  padding: 20px;
-  font-size: 20px;
-  border-radius: 10px;
-  margin: 10px;
-  background-color: #bef1ffde;
-  color: black;
-  cursor: pointer;
-  border: white;
+	padding: 20px;
+	font-size: 20px;
+	border-radius: 10px;
+	margin: 10px;
+	background-color: #bef1ffde;
+	color: black;
+	cursor: pointer;
+	border: white;
 }

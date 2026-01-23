@@ -10,16 +10,21 @@ export class oldInfoLayout extends Component {
 		const { resetGame, isGameOver, isDraw, currentPlayer, winner } = this.props
 
 		return (
-			<section className="infoSection">
-				<div>
+			<section>
+				<div className="m-4 text-2xl">
 					<h2>
 						Статус игры: {isGameOver ? 'Закончена' : `ходит ${currentPlayer}`}
 					</h2>
 					<h2>{isDraw && !winner && 'Ничья'}</h2>
 					<h2>{winner && `Победил: ${winner}`}</h2>
-					<div className="resetButtonContainer">
+					<div className="flex items-center justify-center">
 						{isGameOver || isDraw ? (
-							<button onClick={resetGame}>Начать заново</button>
+							<button
+								className="p-5 text-xl rounded-3xl m-3 bg-sky-200 hover:cursor-pointer"
+								onClick={resetGame}
+							>
+								Начать заново
+							</button>
 						) : (
 							''
 						)}

@@ -8,11 +8,6 @@ export class OldInformation extends Component {
 		super(props)
 	}
 
-	// const dispatch = useDispatch()
-	// const resetGame = () => {
-	// 	dispatch(setRestartGame())
-	// }
-
 	render() {
 		const { resetGame } = this.props
 		return <InformationLayout resetGame={resetGame} />

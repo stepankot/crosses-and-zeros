@@ -5,7 +5,7 @@ import { Component } from 'react'
 export class OldApp extends Component {
 	render() {
 		return (
-			<div className="gameLayout">
+			<div className="flex flex-col items-center justify-center">
 				<Field />
 				<Information />
 			</div>
